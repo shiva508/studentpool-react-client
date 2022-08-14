@@ -1,19 +1,35 @@
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
-
+import AddExpense from "./AddExpense";
+import React, { useState } from "react";
 const NewExpense = (props) => {
+  const [isAddeble, setIsAddeble] = useState(true);
   const saveExpanseHandler = (enteredExpenseData) => {
     const expenseData = {
       id: Math.random(),
       ...enteredExpenseData,
     };
-    console.log(expenseData);
     props.onAddExpense(expenseData);
+    setIsAddeble(true);
+  };
+  const addNewExpenseHandler = (isEnabled) => {
+    setIsAddeble(isEnabled);
+  };
+
+  const cancleExpanseHandler = () => {
+    setIsAddeble(true);
   };
 
   return (
     <div className="new-expense">
-      <ExpenseForm onSaveExpenseData={saveExpanseHandler} />
+      {isAddeble === true ? (
+        <AddExpense onEnableAddExpense={addNewExpenseHandler} />
+      ) : (
+        <ExpenseForm
+          onCancleExpense={cancleExpanseHandler}
+          onSaveExpenseData={saveExpanseHandler}
+        />
+      )}
     </div>
   );
 };
