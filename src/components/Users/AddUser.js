@@ -16,7 +16,8 @@ const AddUser = (props) => {
   const [error, setError] = useState();
   const addUserHandler = (event) => {
     event.preventDefault();
-    console.log(nameInputRef.current.value);
+    const fin = nameInputRef.current.value;
+    const fia = ageInputRef.current.value;
     if (
       enteredUsername.trim().length === 0 ||
       enteredAge === 0 ||
