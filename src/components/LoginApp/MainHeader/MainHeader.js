@@ -7,10 +7,12 @@ const MainHeader = (props) => {
   return (
     <header className={classes["main-header"]}>
       <h1>A Typical Page</h1>
-      <Navigation
+      {/* PROPERY DRILLING NOT REQUIRED with context */}
+      {/* <Navigation
         isLoggedIn={props.isAuthenticated}
         onLogout={props.onLogout}
-      />
+      /> */}
+      <Navigation />
     </header>
   );
 };
